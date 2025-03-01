@@ -1,0 +1,30 @@
+resources:
+- certificate.yaml
+
+# the following config is for teaching kustomize how to do var substitution
+vars:
+- fieldref:
+    fieldPath: metadata.namespace
+  name: NAMESPACE
+  objref:
+    kind: Service
+    name: webhook-service
+    version: v1
+- fieldref: {}
+  name: CERTIFICATENAME
+  objref:
+    group: certmanager.k8s.io
+    kind: Certificate
+    name: serving-cert
+    version: v1alpha1
+- fieldref: {}
+  name: SERVICENAME
+  objref:
+    kind: Service
+    name: webhook-service
+    version: v1
+
+configurations:
+- kustomizeconfig.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

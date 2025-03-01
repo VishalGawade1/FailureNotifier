@@ -1,0 +1,44 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - sample.example.com
+  resources:
+  - appscalers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - sample.example.com
+  resources:
+  - appscalers/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups:
+  - extensions
+  resources:
+  - replicasets/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups:
+  - extensions
+  resources:
+  - replicasets/status
+  verbs:
+  - get
+  - update
+  - patch

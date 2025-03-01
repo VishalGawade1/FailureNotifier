@@ -1,0 +1,7 @@
+version: "2"
+domain: example.com
+repo: std
+resources:
+- group: sample
+  version: v1beta1
+  kind: AppScaler
